@@ -1,3 +1,9 @@
+## [1.1.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.0.0...v1.1.0-dev.1) (2026-08-27)
+
+### ✨ New Features
+
+* Added PokeRaid tweaks ([356fdb8](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/356fdb8d3815668132667b682d33cf0240d07556))
+
 ## 1.0.0 (2026-08-26)
 
 ### ✨ New Features
