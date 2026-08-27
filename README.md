@@ -8,7 +8,7 @@ Patches for apps I like.
 
 <!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
 
-**NOTE FOR DeFit++:** This patch breaks google sign in since firebase is expecting a specific certificate. Instructions to get around it will be posted soon, but for now you can use my prebuilt version.
+**NOTE FOR DeFit++:** This patch breaks google sign in since firebase is expecting a specific certificate. Instructions to get around it will be posted soon, but for now you can use my [prebuilt version](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/download/v1.0.0/DeFit_-v0.8.2a-patches-v1.0.0.apk).
 
 ### How to use these patches
 
