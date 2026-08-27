@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0-dev.1",
+  "version": "1.1.0-dev.2",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -211,6 +211,39 @@
           "targets": [
             {
               "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Material You Theme",
+      "description": "Uses Android 12+ wallpaper-derived Material You colors throughout PokeRaid while preserving semantic status and raid-type colors.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
