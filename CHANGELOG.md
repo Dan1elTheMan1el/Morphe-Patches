@@ -1,3 +1,27 @@
+## [1.3.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-28)
+
+### ✨ New Features
+
+* Only show login tutorial when logged out ([3df0a5a](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/3df0a5a3a5044973de766534499253e0f6cd9aaf))
+
+## [1.3.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-28)
+
+### 🐛 Bug Fixes
+
+* DeFit tutorial patch error ([77d9c60](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/77d9c608d22471bbdf4a94619a3cbab5955f8898))
+
+## [1.3.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-28)
+
+### ✨ New Features
+
+* Auto claim daily coins via intent in PokeRaid ([d5d9046](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d5d90460a9578009b99b23bcd62bde6e9c74fdf0))
+
+## [1.3.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-28)
+
+### ✨ New Features
+
+* Add patch with tutorial to fix login in DeFit++ ([c45650b](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c45650b9a4e139e560dd926730fc036b9f134a9c))
+
 ## [1.2.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.1.0...v1.2.0) (2026-08-28)
 
 ### ✨ New Features
