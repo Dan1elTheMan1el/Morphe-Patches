@@ -106,7 +106,7 @@ private val loginFixTutorialBytecodePatch = bytecodePatch {
                 AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                 null,
                 null,
-                MutableMethodImplementation(20),
+                MutableMethodImplementation(12),
             ).toMutable().apply {
                 addInstructions(
                     0,
