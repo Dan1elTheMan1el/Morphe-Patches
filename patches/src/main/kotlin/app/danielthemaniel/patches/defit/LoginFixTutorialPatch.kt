@@ -26,6 +26,65 @@ private val loginFixTutorialBytecodePatch = bytecodePatch {
             "Lcom/googlefit/tester/MainActivity;"
         )
 
+        // MainActivity.y() is DeFit's normal login-state UI refresh.
+        // Inject the visibility logic directly so InlineSmaliCompiler only
+        // needs to resolve methods/classes that already exist in the APK.
+        mainActivity.methods
+            .firstOrNull {
+                it.name == "y" &&
+                    it.parameterTypes.isEmpty() &&
+                    it.returnType == "V"
+            }
+            ?.addInstructions(
+                0,
+                """
+                move-object/from16 v0, p0
+
+                invoke-static {v0}, Lp2/a;->a(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+                move-result-object v1
+
+                if-nez v1, :patch_logged_in
+
+                const/4 v1, 0x0
+                goto :patch_apply_visibility
+
+                :patch_logged_in
+                const/16 v1, 0x8
+
+                :patch_apply_visibility
+                invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+                move-result-object v2
+
+                invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+                move-result-object v3
+
+                const-string v4, "loginFixTutorialButton"
+                const-string v5, "id"
+                invoke-virtual {v2, v4, v5, v3}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+                move-result v4
+
+                if-eqz v4, :patch_copy_button
+                invoke-virtual {v0, v4}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+                move-result-object v4
+                if-eqz v4, :patch_copy_button
+                invoke-virtual {v4, v1}, Landroid/view/View;->setVisibility(I)V
+
+                :patch_copy_button
+                const-string v4, "copySigningSha1Button"
+                invoke-virtual {v2, v4, v5, v3}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+                move-result v4
+
+                if-eqz v4, :patch_visibility_done
+                invoke-virtual {v0, v4}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+                move-result-object v4
+                if-eqz v4, :patch_visibility_done
+                invoke-virtual {v4, v1}, Landroid/view/View;->setVisibility(I)V
+
+                :patch_visibility_done
+                """.trimIndent()
+            )
+
+
         // Return the installed APK's actual signing certificate SHA-1
         // as AA:BB:CC:... so it can be pasted directly into Firebase.
         mainActivity.methods.add(
@@ -230,7 +289,7 @@ private val loginFixTutorialBytecodePatch = bytecodePatch {
 val loginFixTutorialPatch = resourcePatch(
     name = "Login Fix Tutorial",
     description = "Adds an in-app Google Fit login setup guide and a button to copy the installed APK's signing SHA-1.",
-    default = true,
+    default = false,
 ) {
     compatibleWith(COMPATIBILITY_DEFIT)
     dependsOn(loginFixTutorialBytecodePatch)
@@ -275,6 +334,7 @@ val loginFixTutorialPatch = resourcePatch(
                 button.setAttribute("android:textAllCaps", "false")
                 button.setAttribute("android:enabled", "true")
                 button.setAttribute("android:clickable", "true")
+                button.setAttribute("android:visibility", "gone")
 
                 // Match the login button's horizontal placement/margins when
                 // those attributes exist, but deliberately do NOT copy its
