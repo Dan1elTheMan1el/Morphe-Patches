@@ -1,3 +1,9 @@
+## [1.3.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-28)
+
+### ✨ New Features
+
+* Add patch with tutorial to fix login in DeFit++ ([c45650b](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c45650b9a4e139e560dd926730fc036b9f134a9c))
+
 ## [1.2.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.1.0...v1.2.0) (2026-08-28)
 
 ### ✨ New Features
