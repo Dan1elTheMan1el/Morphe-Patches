@@ -1,3 +1,9 @@
+## [1.3.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-28)
+
+### 🐛 Bug Fixes
+
+* DeFit tutorial patch error ([77d9c60](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/77d9c608d22471bbdf4a94619a3cbab5955f8898))
+
 ## [1.3.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-28)
 
 ### ✨ New Features
