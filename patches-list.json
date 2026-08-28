@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.1",
+  "version": "1.3.0-dev.2",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -91,6 +91,39 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Daily Reward Background Status & Auto-Claim",
+      "description": "Checks daily reward eligibility and automatically claims it (bypassing ads) if available. Invoke by sending intent as broadcast, with action app.danielthemaniel.pokeraid.CHECK_DAILY_REWARD, and package me.pokeraid.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - for Pokémon GO Raid",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": {
+                "ARM64_V8A": 160,
+                "ARMEABI_V7A": 160,
+                "X86_64": 160,
+                "X86": 160
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Disable Ads",
@@ -188,7 +221,7 @@
     {
       "name": "Login Fix Tutorial",
       "description": "Adds an in-app Google Fit login setup guide and a button to copy the installed APK's signing SHA-1.",
-      "default": false,
+      "default": true,
       "dependencies": [
         "BytecodePatch"
       ],

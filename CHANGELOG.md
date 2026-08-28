@@ -1,3 +1,9 @@
+## [1.3.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-28)
+
+### ✨ New Features
+
+* Auto claim daily coins via intent in PokeRaid ([d5d9046](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d5d90460a9578009b99b23bcd62bde6e9c74fdf0))
+
 ## [1.3.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-28)
 
 ### ✨ New Features
