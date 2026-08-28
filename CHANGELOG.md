@@ -1,3 +1,9 @@
+## [1.3.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-28)
+
+### ✨ New Features
+
+* Only show login tutorial when logged out ([3df0a5a](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/3df0a5a3a5044973de766534499253e0f6cd9aaf))
+
 ## [1.3.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-28)
 
 ### 🐛 Bug Fixes
