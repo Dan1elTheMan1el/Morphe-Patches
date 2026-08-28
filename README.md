@@ -8,16 +8,14 @@ Patches for apps I like.
 
 <!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
 
-**NOTE FOR DeFit++:** This patch breaks google sign in since firebase is expecting a specific certificate. Instructions to get around it will be posted soon, but for now you can use my [prebuilt version](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/download/v1.0.0/DeFit_-v0.8.2a-patches-v1.0.0.apk).
-
 ### How to use these patches
 
 Click here to add these patches to Morphe: https://morphe.software/add-source?github=Dan1elTheMan1el/Morphe-Patches
 
 ## 🩹 Patches list
 
-<!-- PATCHES_START EXPANDED -->
-> **[v1.3.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.3.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;14 patches total
+<!-- PATCHES_START -->
+> **[v1.3.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.3.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;14 patches total
 <details open>
 <summary>📦 PokeRaid - for Pokémon GO Raid&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
