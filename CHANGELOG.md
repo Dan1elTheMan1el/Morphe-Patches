@@ -1,3 +1,9 @@
+## [1.4.1-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.0...v1.4.1-dev.1) (2026-08-29)
+
+### 🐛 Bug Fixes
+
+* Auto enable keyboard name patch ([befdf52](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/befdf52d9e986d0f07beafad81f8280aa5e597aa))
+
 ## [1.4.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0...v1.4.0) (2026-08-29)
 
 ### ✨ New Features
