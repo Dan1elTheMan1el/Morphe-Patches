@@ -1,3 +1,11 @@
+## [1.4.2-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.1...v1.4.2-dev.1) (2026-08-29)
+
+### 🐛 Bug Fixes
+
+* **DeFit++:** Refresh update metadata ([9431be8](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/9431be8632e76956fa23d5770efd26c978d200b8))
+* **Keyboard Designer:** Refresh update metadata ([0fcbb72](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/0fcbb720b53f326d2e6527dd308f30de1cb0dd64))
+* **PokeRaid:** Refresh update metadata ([d61c756](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d61c7564a3bacaf11530b767b7688c7aaba8a071))
+
 ## [1.4.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.0...v1.4.1) (2026-08-29)
 
 ### 🐛 Bug Fixes
