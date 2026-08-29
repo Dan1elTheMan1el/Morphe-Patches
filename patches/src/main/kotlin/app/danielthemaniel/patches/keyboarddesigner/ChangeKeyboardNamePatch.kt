@@ -13,7 +13,7 @@ private const val KEYBOARD_SERVICE =
 val changeKeyboardNamePatch = resourcePatch(
     name = "Change keyboard name",
     description = "Changes the name shown for Keyboard Designer in Android's keyboard/input-method switcher.",
-    default = false,
+    default = true,
 ) {
     compatibleWith(COMPATIBILITY_KEYBOARD_DESIGNER)
 
