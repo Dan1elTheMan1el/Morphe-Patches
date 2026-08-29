@@ -12,17 +12,17 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
   - I recommend pairing my patches with [Nai64's patch](https://github.com/Nai64/Nai64Patches) called `Ads Free Reward (Experimental)`. The default settings work for skipping ads for daily coins or sweepstake tickets.
   - <a id="bounty-daily-reward-shortcut"></a>Simply remaps the bounty button to the daily coins - you can long press the button to open the original menu.
 
-    <figure align="center">
-      <img src="img/bountyToDaily.jpg" alt="Daily Rewards Screenshot" width="200">
-      <figcaption>Figure 1: Bounty Daily Reward Shortcut</figcaption>
-    </figure>
+    <p align="center">
+      <img src="img/bountyToDaily.jpg" alt="Daily Rewards Screenshot" width="200"></br>
+      <em>Figure 1: Bounty Daily Reward Shortcut</em>
+    </p>
 
   - <a id="daily-reward-background-auto-claim"></a>If you want to automatically claim your daily coins without opening the app, use the **Daily Reward Background Auto Claim** patch. I use **MacroDroid**, but apps like Tasker or equivalent could also acheive the same. 
 
-    <figure align="center">
-      <img src="img/macroDroidAutoClaim.jpg" alt="MacroDroid Setup" width="300">
-      <figcaption>Figure 2: MacroDroid setup to claim daily rewards</figcaption>
-    </figure>
+    <p align="center">
+      <img src="img/macroDroidAutoClaim.jpg" alt="MacroDroid Setup" width="300"><br>
+      <em>Figure 2: MacroDroid setup to claim daily rewards</em>
+    </p>
 
     I have it run every day at 4:30PM, and all it does is send a **Broadcast** to the package `me.pokeraid` with the action `app.danielthemaniel.pokeraid.CHECK_DAILY_REWARD`.
   - <a id="quick-join-button"></a>I though of adding quick join buttons for when lots of people are trying to join raid rooms at the same time. I didn't like that you need to tap into the raid details before joining, and by the time it loads it can already be full. This patch adds **JOIN** buttons accessible from the main list.
@@ -31,22 +31,23 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
   - <a id="login-fix-tutorial"></a>I added a tutorial for how to setup Google login/API on your own signing signature. If it's not clear enough let me know, otherwise use my [pre-built version](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/download/v1.0.0/DeFit_-v0.8.2a-patches-v1.0.0.apk).
 - ### Custom Keyboard Designer
   - <a id="start-with-pokegenie-keyboard"></a>This app is a bit difficult to start using, but offers a ton of customization options for creating custom keyboards. Having used PokeGenie on iOS, I wanted an equivalent keyboard on Android, so I designed this one.
-    <table border="0" align="center" cellpadding="0" cellspacing="0">
+    <table align="center">
       <tr>
         <td>
-          <figure align="center">
-            <img src="img/iOSpokeGenie.jpeg" alt="Original PokeGenie Keyboard" width="300">
-            <figcaption><b>Figure 3a:</b> PokeGenie iOS's keyboard</figcaption>
-          </figure>
+          <p align="center">
+            <img src="img/iOSpokeGenie.jpeg" alt="Original PokeGenie Keyboard" width="300"><br>
+            <em><b>Figure 3a:</b> PokeGenie iOS's keyboard</em>
+          </p>
         </td>
         <td>
-          <figure align="center">
-            <img src="img/pokeGenieKeyboard.jpg" alt="Patch's keyboard" width="300">
-            <figcaption><b>Figure 3b:</b> My adaptation</figcaption>
-          </figure>
+          <p align="center">
+            <img src="img/pokeGenieKeyboard.jpg" alt="Patch's keyboard" width="300"><br>
+            <em><b>Figure 3b:</b> My adaptation</em>
+          </p>
         </td>
       </tr>
     </table>
+
   - If you already have the app installed and just want to import my PokeGenie keyboard, you can manually import the [keyboard file](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/download/v1.2.0/PokemonTypesKeyboard.txt).
   - If you want to change the symbols / layout, you can! It's a keyboard designer app of course.
   
