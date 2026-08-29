@@ -1,3 +1,9 @@
+## [1.4.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.3.0...v1.4.0-dev.1) (2026-08-29)
+
+### ✨ New Features
+
+* Custom keyboard name (Keyboard Designer) ([04bbf5d](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/04bbf5dc8885b43a458a6345d27b299be8ac0047))
+
 ## [1.3.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0) (2026-08-28)
 
 ### 🐛 Bug Fixes
