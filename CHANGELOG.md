@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.2...v1.5.0) (2026-09-04)
+
+### ✨ New Features
+
+* **DeFit++:** Experimental support for v0.9.3, and rewrote login fix tutorial in html ([0d4b3fb](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/0d4b3fbcddcfc7dff621248927f3ddaac778757a))
+
 ## [1.5.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.2...v1.5.0-dev.1) (2026-08-30)
 
 ### ✨ New Features
