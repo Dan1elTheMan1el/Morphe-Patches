@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0-dev.1",
+  "version": "1.6.0-dev.2",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -428,6 +428,49 @@
     {
       "name": "Remove Bottom Banner Ad",
       "description": "Removes DeFit's bottom banner-ad container from the main layout.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fitness.debugger",
+          "name": "DeFit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#008577",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2a",
+              "versionCodes": {
+                "ARM64_V8A": 821,
+                "ARMEABI_V7A": 821,
+                "X86_64": 821,
+                "X86": 821
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Session Distance Notification",
+      "description": "Shows the total distance added during the current sync session in the persistent notification.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

@@ -1,3 +1,9 @@
+## [1.6.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2026-09-06)
+
+### ✨ New Features
+
+* **DeFit++:** Session distance in notification text ([a47f657](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/a47f6579ac3313b170195a8cfc94448a1433c9b7))
+
 ## [1.6.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.5.0...v1.6.0-dev.1) (2026-09-06)
 
 ### ✨ New Features
