@@ -1,3 +1,21 @@
+## [1.6.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2026-09-13)
+
+### 🐛 Bug Fixes
+
+* **DeFit++:** Session distance notif compatibility for 0.9.3 ([86b7dc6](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/86b7dc6c7a75c46921a8471c6f7cfd5b910370ce))
+
+## [1.6.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2026-09-06)
+
+### ✨ New Features
+
+* **DeFit++:** Session distance in notification text ([a47f657](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/a47f6579ac3313b170195a8cfc94448a1433c9b7))
+
+## [1.6.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.5.0...v1.6.0-dev.1) (2026-09-06)
+
+### ✨ New Features
+
+* **Counter:** Unlock Full Version ([48bc17e](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/48bc17efefa56da347cfb5d5786cbf9a6088c287))
+
 ## [1.5.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.2...v1.5.0) (2026-09-04)
 
 ### ✨ New Features
