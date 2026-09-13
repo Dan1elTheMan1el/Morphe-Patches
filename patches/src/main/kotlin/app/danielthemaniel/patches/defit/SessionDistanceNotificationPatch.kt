@@ -7,9 +7,11 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction11x
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22x
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction3rc
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -17,6 +19,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import com.android.tools.smali.dexlib2.immutable.reference.ImmutableFieldReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableMethodReference
 
 /**
@@ -72,21 +75,49 @@ val sessionDistanceNotificationPatch = bytecodePatch(
             notificationImplementation.registerCount - 1
 
         /*
-         * public static void patch_addSessionDistance(Context, float)
+         * Accumulate one exact distance value.
          *
-         * Adds one exact DeFit distance DataPoint to our running total.
+         * 0.8.2a passes Context directly.
          *
-         * 0.8.2a passes the sync Context directly, so no synthetic static
-         * Context field is required and NotificationService is not mutated at
-         * startup.
+         * 0.9.3's GoogleFitTools.insertFit() is an INSTANCE method with the
+         * exact signature:
+         *
+         *     insertFit(int, long, long)
+         *
+         * It does not receive Context as a parameter. The actual 0.9.3 class
+         * has an instance field:
+         *
+         *     packageContext: android.content.Context
+         *
+         * Therefore the 0.9.3 helper receives the GoogleFitTools instance and
+         * reads packageContext from that existing field.
          */
+        val addDistanceOwnerType =
+            if (is093) {
+                "Lcom/googlefit/tester/GoogleFitTools;"
+            } else {
+                "Landroid/content/Context;"
+            }
+
+        val contextSetup =
+            if (is093) {
+                """
+                iget-object v7, p0, Lcom/googlefit/tester/GoogleFitTools;->packageContext:Landroid/content/Context;
+                """.trimIndent()
+            } else {
+                ""
+            }
+
+        val contextRegister =
+            if (is093) "v7" else "p0"
+
         val latestSyncForAccumulator = if (is093) {
             """
-            invoke-static {p0}, Lcom/googlefit/tester/Variables;->getLatestSyncMillis(Landroid/content/Context;)J
+            invoke-static {$contextRegister}, Lcom/googlefit/tester/Variables;->getLatestSyncMillis(Landroid/content/Context;)J
             """.trimIndent()
         } else {
             """
-            invoke-static {p0}, Lk4/j;->d(Landroid/content/Context;)J
+            invoke-static {$contextRegister}, Lk4/j;->d(Landroid/content/Context;)J
             """.trimIndent()
         }
 
@@ -95,7 +126,7 @@ val sessionDistanceNotificationPatch = bytecodePatch(
             "patch_addSessionDistance",
             listOf(
                 ImmutableMethodParameter(
-                    "Landroid/content/Context;",
+                    addDistanceOwnerType,
                     null,
                     null,
                 ),
@@ -115,9 +146,11 @@ val sessionDistanceNotificationPatch = bytecodePatch(
             addInstructions(
                 0,
                 """
+                $contextSetup
+
                 const-string v0, "defit_patch_notification"
                 const/4 v1, 0x0
-                invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+                invoke-virtual {$contextRegister, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
                 move-result-object v0
 
                 $latestSyncForAccumulator
@@ -222,7 +255,7 @@ val sessionDistanceNotificationPatch = bytecodePatch(
             notificationService.type,
             "patch_addSessionDistance",
             listOf(
-                "Landroid/content/Context;",
+                addDistanceOwnerType,
                 "F",
             ),
             "V",
@@ -287,46 +320,43 @@ val sessionDistanceNotificationPatch = bytecodePatch(
                         "Unable to resolve DeFit 0.9.3 distance register"
                     )
 
-            val isStatic =
-                insertFit.accessFlags and
-                    AccessFlags.STATIC.value != 0
-
-            fun width(type: CharSequence): Int =
-                if (type == "J" || type == "D") 2 else 1
-
-            val parameterWidth =
-                insertFit.parameterTypes.sumOf { width(it) } +
-                    if (isStatic) 0 else 1
-
-            var parameterRegister =
-                implementation.registerCount - parameterWidth
-
-            if (!isStatic) {
-                parameterRegister++
-            }
-
-            var contextRegister: Int? = null
-
-            insertFit.parameterTypes.forEach { type ->
-                if (
-                    contextRegister == null &&
-                    type.toString() ==
-                        "Landroid/content/Context;"
-                ) {
-                    contextRegister = parameterRegister
+            /*
+             * Verified from the 0.9.3/930 DEX:
+             *
+             *   GoogleFitTools.insertFit(IJJ)V
+             *   registers_size = 16
+             *   ins_size       = 6
+             *
+             * Therefore p0 / `this` is v10.
+             *
+             * getNormDistance(DI)F is invoked with:
+             *   this = v10
+             * and its result is:
+             *   move-result v8
+             *
+             * Compute the physical p0 register rather than hardcoding v10 so
+             * the patch still verifies the target layout before inserting.
+             */
+            val parameterWordCount =
+                insertFit.parameterTypes.sumOf { type ->
+                    when (type.toString()) {
+                        "J", "D" -> 2
+                        else -> 1
+                    }
                 }
-                parameterRegister += width(type)
-            }
 
-            val context =
-                contextRegister
-                    ?: error(
-                        "Unable to find DeFit 0.9.3 insertFit Context"
-                    )
+            val thisRegister =
+                implementation.registerCount -
+                    parameterWordCount - 1
 
-            if (context > 0xF || distanceRegister > 0xF) {
+            if (
+                insertFit.parameterTypes.map { it.toString() } !=
+                    listOf("I", "J", "J") ||
+                thisRegister > 0xF ||
+                distanceRegister > 0xF
+            ) {
                 error(
-                    "Unsupported DeFit 0.9.3 insertFit register layout"
+                    "Unexpected DeFit 0.9.3 insertFit register layout"
                 )
             }
 
@@ -335,7 +365,7 @@ val sessionDistanceNotificationPatch = bytecodePatch(
                 BuilderInstruction35c(
                     Opcode.INVOKE_STATIC,
                     2,
-                    context,
+                    thisRegister,
                     distanceRegister,
                     0,
                     0,
@@ -505,11 +535,213 @@ val sessionDistanceNotificationPatch = bytecodePatch(
          * CharSequence argument register with our dynamic text, and leave the
          * original builder call untouched.
          */
-        val currentNotificationInstructions =
-            notificationImplementation.instructions.toList()
+        /*
+         * Replace the stock notification body.
+         *
+         * 0.9.3 does NOT call a CharSequence setter directly from
+         * NotificationService.get().  It uses the obfuscated notification
+         * builder Ly/q;:
+         *
+         *   q.e = content title
+         *   q.f = content text
+         *
+         * and Ly/q;.a() later copies those fields into Android's
+         * Notification.Builder.setContentTitle()/setContentText().
+         *
+         * Therefore the reliable 0.9.3 hook is the existing q.f field, not a
+         * guessed setter signature.
+         *
+         * 0.8.2a retains the old direct y/k.c(CharSequence) body setter.
+         */
+        if (is093) {
+            /*
+             * Verified directly against the supplied DeFit 0.9.3 / 930 DEX:
+             *
+             * NotificationService.get(Context):
+             *   registers_size = 25
+             *   ins_size       = 2
+             *   p0 (Context)   = v23
+             *
+             * The notification builder is Ly/q; and its build() method is:
+             *   Ly/q;.a()Landroid/app/Notification;
+             *
+             * In the actual DEX there are two build() calls (the normal path
+             * and a second return path). Both operate on v10:
+             *
+             *   invoke-virtual {v10}, Ly/q;->a()Landroid/app/Notification;
+             *
+             * Ly/q has:
+             *   e : CharSequence  = content title
+             *   f : CharSequence  = content text
+             *
+             * Ly/q.a() then does:
+             *   iget-object ..., v0, Ly/q;->e:CharSequence;
+             *   Notification.Builder.setContentTitle(...)
+             *   iget-object ..., v0, Ly/q;->f:CharSequence;
+             *   Notification.Builder.setContentText(...)
+             *
+             * Therefore writing q.f immediately before build() changes ONLY
+             * the notification body and leaves the rest of the notification
+             * construction untouched.
+             *
+             * Do not guess registers: derive p0 from the actual method's
+             * register/parameter layout and extract the builder register from
+             * the real invoke-virtual instruction.
+             */
+            val bodyFieldReference =
+                ImmutableFieldReference(
+                    "Ly/q;",
+                    "f",
+                    "Ljava/lang/CharSequence;",
+                )
 
-        val bodyCall =
-            if (!is093) {
+            val instructions =
+                notificationImplementation.instructions.toList()
+
+            val buildIndices =
+                instructions.withIndex()
+                    .filter { (_, instruction) ->
+                        val reference =
+                            (instruction as? ReferenceInstruction)
+                                ?.reference as? MethodReference
+
+                        reference?.definingClass == "Ly/q;" &&
+                            reference.name == "a" &&
+                            reference.parameterTypes.isEmpty() &&
+                            reference.returnType ==
+                                "Landroid/app/Notification;"
+                    }
+                    .map { it.index }
+
+            if (buildIndices.isEmpty()) {
+                error(
+                    "Unable to find DeFit 0.9.3 Ly/q;->a() notification build"
+                )
+            }
+
+            /*
+             * Verify the method layout from the actual DEX rather than
+             * hardcoding v23.
+             *
+             * NotificationService.get(Context) is a non-static instance
+             * method, so register numbering reserves one extra "ins" slot
+             * for the implicit `this` (p0) ahead of the explicit Context
+             * parameter (p1). p0 is what we actually want here: `this` is a
+             * NotificationService, which extends Service -> ContextWrapper
+             * -> Context, so it's a valid, reliably-live Context reference
+             * at the build() call site even where p1's copy may have gone
+             * dead from register reuse earlier in the method.
+             */
+            val isStaticMethod =
+                notificationMethod.accessFlags and
+                    AccessFlags.STATIC.value != 0
+
+            val implicitThisSlots = if (isStaticMethod) 0 else 1
+
+            val contextRegister =
+                notificationImplementation.registerCount -
+                    notificationMethod.parameterTypes.sumOf { type ->
+                        when (type.toString()) {
+                            "J", "D" -> 2
+                            else -> 1
+                        }
+                    } -
+                    implicitThisSlots
+
+            if (
+                notificationMethod.parameterTypes.map { it.toString() } !=
+                    listOf("Landroid/content/Context;") ||
+                notificationImplementation.registerCount != 25 ||
+                contextRegister != 23
+            ) {
+                error(
+                    "Unexpected DeFit 0.9.3 NotificationService.get register layout"
+                )
+            }
+
+            /*
+             * Process from the end so inserting instructions cannot change
+             * the indices of build calls that have not yet been processed.
+             */
+            for (buildIndex in buildIndices.asReversed()) {
+                val buildInstruction =
+                    instructions[buildIndex] as?
+                        FiveRegisterInstruction
+                        ?: error(
+                            "Unable to decode DeFit 0.9.3 notification build invoke"
+                        )
+
+                /*
+                 * Ly/q->a() is a one-register invoke. In the 35c encoding,
+                 * the object register is registerC.
+                 */
+                val builderRegister = buildInstruction.registerC
+
+                if (builderRegister != 10) {
+                    error(
+                        "Unexpected DeFit 0.9.3 notification builder register"
+                    )
+                }
+
+                /*
+                 * v0 is dead at both verified build sites and is used only as
+                 * the temporary result of patch_getSessionDistanceText().
+                 * The helper itself receives the real Context (v23).
+                 *
+                 * v23 doesn't fit in the 4-bit nibble registers format 35c
+                 * encodes (v0-v15 only), so fall back to the /range
+                 * encoding whenever contextRegister exceeds that limit -
+                 * same threshold already used for the 0.8.2a path below.
+                 */
+                if (contextRegister <= 0xF) {
+                    notificationImplementation.addInstruction(
+                        buildIndex,
+                        BuilderInstruction35c(
+                            Opcode.INVOKE_STATIC,
+                            1,
+                            contextRegister,
+                            0,
+                            0,
+                            0,
+                            0,
+                            distanceTextReference,
+                        ),
+                    )
+                } else {
+                    notificationImplementation.addInstruction(
+                        buildIndex,
+                        BuilderInstruction3rc(
+                            Opcode.INVOKE_STATIC_RANGE,
+                            contextRegister,
+                            1,
+                            distanceTextReference,
+                        ),
+                    )
+                }
+
+                notificationImplementation.addInstruction(
+                    buildIndex + 1,
+                    BuilderInstruction11x(
+                        Opcode.MOVE_RESULT_OBJECT,
+                        0,
+                    ),
+                )
+
+                notificationImplementation.addInstruction(
+                    buildIndex + 2,
+                    BuilderInstruction22c(
+                        Opcode.IPUT_OBJECT,
+                        0,
+                        builderRegister,
+                        bodyFieldReference,
+                    ),
+                )
+            }
+        } else {
+           val currentNotificationInstructions =
+                notificationImplementation.instructions.toList()
+
+            val bodyCall =
                 currentNotificationInstructions.withIndex()
                     .firstOrNull { (_, instruction) ->
                         val reference =
@@ -529,106 +761,59 @@ val sessionDistanceNotificationPatch = bytecodePatch(
                         "Unable to find DeFit 0.8.2a " +
                             "notification body setter y.k.c()"
                     )
-            } else {
-                val calls =
-                    currentNotificationInstructions.withIndex()
-                        .mapNotNull { indexed ->
-                            val instruction = indexed.value
 
-                            if (
-                                instruction.opcode !=
-                                    Opcode.INVOKE_VIRTUAL &&
-                                instruction.opcode !=
-                                    Opcode.INVOKE_VIRTUAL_RANGE
-                            ) {
-                                return@mapNotNull null
-                            }
+            val bodyTextRegister =
+                when (
+                    val instruction = bodyCall.value
+                ) {
+                    is com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction ->
+                        instruction.registerD
 
-                            val reference =
-                                (instruction as?
-                                    ReferenceInstruction)
-                                    ?.reference as?
-                                    MethodReference
-                                    ?: return@mapNotNull null
+                    is com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction ->
+                        instruction.startRegister + 1
 
-                            if (
-                                reference.parameterTypes
-                                    .map { it.toString() } !=
-                                    listOf(
-                                        "Ljava/lang/CharSequence;"
-                                    ) ||
-                                reference.returnType !=
-                                    reference.definingClass
-                            ) {
-                                return@mapNotNull null
-                            }
-
-                            indexed
-                        }
-
-                if (calls.size < 2) {
-                    error(
-                        "Unable to find DeFit 0.9.3 " +
-                            "notification title/body setters"
-                    )
+                    else ->
+                        error(
+                            "Unsupported DeFit 0.8.2a notification body " +
+                                "invoke instruction"
+                        )
                 }
 
-                calls[1]
+            val insertIndex = bodyCall.index
+
+            if (notificationContextRegister <= 0xF) {
+                notificationImplementation.addInstruction(
+                    insertIndex,
+                    BuilderInstruction35c(
+                        Opcode.INVOKE_STATIC,
+                        1,
+                        notificationContextRegister,
+                        0,
+                        0,
+                        0,
+                        0,
+                        distanceTextReference,
+                    ),
+                )
+            } else {
+                notificationImplementation.addInstruction(
+                    insertIndex,
+                    BuilderInstruction3rc(
+                        Opcode.INVOKE_STATIC_RANGE,
+                        notificationContextRegister,
+                        1,
+                        distanceTextReference,
+                    ),
+                )
             }
 
-        val bodyTextRegister =
-            when (
-                val instruction = bodyCall.value
-            ) {
-                is com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction ->
-                    // invoke-virtual {builder, text}, method(...)
-                    instruction.registerD
-
-                is com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction ->
-                    // First register is the receiver; second is CharSequence.
-                    instruction.startRegister + 1
-
-                else ->
-                    error(
-                        "Unsupported DeFit notification body " +
-                            "invoke instruction"
-                    )
-            }
-
-        val insertIndex = bodyCall.index
-
-        if (notificationContextRegister <= 0xF) {
             notificationImplementation.addInstruction(
-                insertIndex,
-                BuilderInstruction35c(
-                    Opcode.INVOKE_STATIC,
-                    1,
-                    notificationContextRegister,
-                    0,
-                    0,
-                    0,
-                    0,
-                    distanceTextReference,
-                ),
-            )
-        } else {
-            notificationImplementation.addInstruction(
-                insertIndex,
-                BuilderInstruction3rc(
-                    Opcode.INVOKE_STATIC_RANGE,
-                    notificationContextRegister,
-                    1,
-                    distanceTextReference,
+                insertIndex + 1,
+                BuilderInstruction11x(
+                    Opcode.MOVE_RESULT_OBJECT,
+                    bodyTextRegister,
                 ),
             )
         }
-
-        notificationImplementation.addInstruction(
-            insertIndex + 1,
-            BuilderInstruction11x(
-                Opcode.MOVE_RESULT_OBJECT,
-                bodyTextRegister,
-            ),
-        )
     }
 }
