@@ -1,3 +1,9 @@
+## [1.6.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2026-10-30)
+
+### ✨ New Features
+
+* **YouTube:** Play current video in media player artwork ([64b87d0](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/64b87d008f541346951044aaa7aaf14c0fd6d288))
+
 ## [1.6.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2026-09-13)
 
 ### 🐛 Bug Fixes

@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.6.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.6.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;17 patches total
+> **[v1.6.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.6.0-dev.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
 <details>
 <summary>📦 PokeRaid - for Pokémon GO Raid&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
@@ -93,6 +93,21 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Change keyboard name](#change-keyboard-name) | Changes the name shown for Keyboard Designer in Android's keyboard/input-method switcher. | • Keyboard name |
 | [Start with PokeGenie keyboard](#start-with-pokegenie-keyboard) | Adds my PokeGenie-inspired keyboard design on fresh setup and makes it the portrait text-input default. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features, extended design package, and extended keyboard package. |  |
+
+</details>
+
+<details>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 21.20.405 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Current Frame Media Artwork](#current-frame-media-artwork) | Adds an in-player control that updates the media artwork from the current video frame, including while the screen is off, and can blank the media title. |  |
 
 </details>
 

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0-dev.3",
+  "version": "1.6.0-dev.4",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -76,7 +76,7 @@
     },
     {
       "name": "Current Frame Media Artwork",
-      "description": "Adds an in-player control for periodically updating media artwork from the current video frame.",
+      "description": "Adds an in-player control that updates the media artwork from the current video frame, including while the screen is off, and can blank the media title.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -563,37 +563,6 @@
                 "ARMEABI_V7A": 846,
                 "X86_64": 846,
                 "X86": 846
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Ultimate Pure Patch (No-Crash)",
-      "description": "Unlocks premium and neutralizes integrity checks while preserving app lifecycle to prevent crashes.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "flar2.devcheck",
-          "name": "DevCheck",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#4FA844",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "6.57",
-              "versionCodes": {
-                "ARM64_V8A": 657,
-                "ARMEABI_V7A": 657,
-                "X86_64": 657,
-                "X86": 657
               },
               "isExperimental": false,
               "minSdk": null,
