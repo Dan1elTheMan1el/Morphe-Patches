@@ -1,3 +1,9 @@
+## [1.6.0-dev.5](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.4...v1.6.0-dev.5) (2026-11-01)
+
+### ✨ New Features
+
+* **YouTube:** Add support for 21.30.216 (And possibly future versions) ([fa5e113](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/fa5e1137c54007224461a189e2c0a990d82d1b6e))
+
 ## [1.6.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2026-10-30)
 
 ### ✨ New Features
