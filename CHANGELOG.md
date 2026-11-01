@@ -1,3 +1,16 @@
+## [1.6.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.5.0...v1.6.0) (2026-11-01)
+
+### 🐛 Bug Fixes
+
+* **DeFit++:** Session distance notif compatibility for 0.9.3 ([86b7dc6](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/86b7dc6c7a75c46921a8471c6f7cfd5b910370ce))
+
+### ✨ New Features
+
+* **Counter:** Unlock Full Version ([48bc17e](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/48bc17efefa56da347cfb5d5786cbf9a6088c287))
+* **DeFit++:** Session distance in notification text ([a47f657](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/a47f6579ac3313b170195a8cfc94448a1433c9b7))
+* **YouTube:** Add support for 21.30.216 (And possibly future versions) ([fa5e113](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/fa5e1137c54007224461a189e2c0a990d82d1b6e))
+* **YouTube:** Play current video in media player artwork ([64b87d0](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/64b87d008f541346951044aaa7aaf14c0fd6d288))
+
 ## [1.6.0-dev.5](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0-dev.4...v1.6.0-dev.5) (2026-11-01)
 
 ### ✨ New Features
