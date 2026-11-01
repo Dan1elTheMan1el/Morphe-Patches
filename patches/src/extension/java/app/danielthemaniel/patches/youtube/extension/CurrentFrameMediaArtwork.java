@@ -123,6 +123,17 @@ public final class CurrentFrameMediaArtwork {
     private static volatile boolean backgroundFrames = true;
     /** Replace the media title and subtitle with blank text. */
     private static volatile boolean hideText;
+    /**
+     * Whether the patch managed to apply the background-frame hooks to this YouTube
+     * version. Those
+     * hooks target obfuscated code and are applied all-or-nothing, so on a version
+     * where they could
+     * not be matched the rest of the feature still works and the background option
+     * is hidden.
+     * Set when the first of those hooks runs, since only the patched code ever
+     * calls them.
+     */
+    private static volatile boolean backgroundSupported;
 
     // The newest frame we published and the YouTube metadata it belongs to (main
     // thread only).
@@ -193,6 +204,7 @@ public final class CurrentFrameMediaArtwork {
      * controller's "app entered background" notification).
      */
     public static boolean engineForeground(boolean foreground) {
+        markBackgroundSupported();
         return foreground || (backgroundFrames && captureEnabled);
     }
 
@@ -206,7 +218,19 @@ public final class CurrentFrameMediaArtwork {
      * so video keeps being selected and decoded (into the fallback surface).
      */
     public static boolean hasVideoView(boolean hasView) {
+        markBackgroundSupported();
         return hasView || (backgroundFrames && captureEnabled);
+    }
+
+    /**
+     * Called from the background hooks, which only exist when the patch applied
+     * them.
+     */
+    private static void markBackgroundSupported() {
+        if (backgroundSupported)
+            return;
+        backgroundSupported = true;
+        updateBackgroundSurface(); // starts the off-screen surface now that it is known to be used
     }
 
     /**
@@ -490,7 +514,7 @@ public final class CurrentFrameMediaArtwork {
 
     /** Starts or disables the fallback surface according to the current setting. */
     private static void updateBackgroundSurface() {
-        if (backgroundFrames) {
+        if (backgroundSupported && backgroundFrames) {
             FallbackSurface.ensureStarted(); // async; publishes backgroundSurface when ready
         } else {
             backgroundSurface = null;
@@ -1107,25 +1131,27 @@ public final class CurrentFrameMediaArtwork {
                         }
                     });
 
-            addDropdown(content, themed, "Frames while screen off / app hidden",
-                    new String[] { "On", "Off" },
-                    backgroundFrames ? 0 : 1,
-                    new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view,
-                                int position, long id) {
-                            final boolean enabled = position == 0;
-                            if (enabled != backgroundFrames) {
-                                backgroundFrames = enabled;
-                                updateBackgroundSurface();
-                                savePrefs();
+            if (backgroundSupported) {
+                addDropdown(content, themed, "Frames while screen off / app hidden",
+                        new String[] { "On", "Off" },
+                        backgroundFrames ? 0 : 1,
+                        new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                                final boolean enabled = position == 0;
+                                if (enabled != backgroundFrames) {
+                                    backgroundFrames = enabled;
+                                    updateBackgroundSurface();
+                                    savePrefs();
+                                }
                             }
-                        }
 
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                        }
-                    });
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                            }
+                        });
+            }
 
             addDropdown(content, themed, "Title and subtitle",
                     new String[] { "Show", "Hide (blank)" },
