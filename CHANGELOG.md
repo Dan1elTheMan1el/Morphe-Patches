@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0...v1.6.1) (2026-11-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Return media title when tweak turned off ([c61f802](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c61f8021666addecc515f89688b42663e4e9e9ef))
+
 ## [1.6.1-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0...v1.6.1-dev.1) (2026-11-03)
 
 ### 🐛 Bug Fixes
