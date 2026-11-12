@@ -38,9 +38,9 @@ import java.util.logging.Logger
  * emoji" instead of failing to patch. Checked against 447.0.0.55.81 and 452.1.0.53.64.
  */
 
-/** Runtime half of this patch, built by the appleEmojiExtensionDex task in patches/build.gradle.kts. */
+/** Runtime half of this patch, dexed into extensions/instagram.dex by the dexExtensions task in patches/build.gradle.kts. */
 private const val EXT = "Lapp/danielthemaniel/patches/instagram/extension/AppleEmoji;"
-private const val EXTENSION_FILE = "extensions/apple_emoji.dex"
+private const val EXTENSION_FILE = "extensions/instagram.dex"
 
 private const val CTX = "Landroid/content/Context;"
 private const val TYPEFACE = "Landroid/graphics/Typeface;"
