@@ -1,3 +1,9 @@
+## [1.7.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.1...v1.7.0-dev.1) (2026-11-12)
+
+### ✨ New Features
+
+* **Instagram:** Apple emojis everywhere ([aac7123](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/aac7123927da01c975c068e39b501a10c5a2b50f))
+
 ## [1.6.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.0...v1.6.1) (2026-11-09)
 
 ### 🐛 Bug Fixes
