@@ -88,8 +88,51 @@ tasks {
         }
     }
 
+    // Same pipeline as the YouTube extension: compile the extension source set, d8 the Instagram
+    // classes into a single dex and ship it as extensions/apple_emoji.dex.
+    val appleEmojiExtensionDex = register<Exec>("appleEmojiExtensionDex") {
+        dependsOn("compileExtensionJava")
+
+        val sdkDirectory = System.getenv("ANDROID_HOME")
+            ?: "${System.getProperty("user.home")}/Library/Android/sdk"
+        val buildToolsDirectory = file("$sdkDirectory/build-tools/36.1.0")
+        val outputDirectory = layout.buildDirectory.dir("apple-emoji-extension").get().asFile
+        val resourceDirectory = layout.buildDirectory.dir("resources/main/extensions").get().asFile
+        val androidJar = file("$sdkDirectory/platforms/android-36/android.jar")
+
+        doFirst {
+            outputDirectory.deleteRecursively()
+            outputDirectory.mkdirs()
+            resourceDirectory.mkdirs()
+        }
+
+        doFirst {
+            // AppleEmoji*.class also picks up its inner classes (AppleEmoji$1, AppleEmoji$Lifecycle, ...).
+            val extensionClasses = fileTree(
+                "$buildDir/classes/java/extension/app/danielthemaniel/patches/instagram/extension"
+            ).matching {
+                include("AppleEmoji*.class", "FontPrep*.class")
+            }.files
+            commandLine(
+                file("$buildToolsDirectory/d8"),
+                "--min-api", "28",
+                "--lib", androidJar,
+                "--output", outputDirectory,
+                *extensionClasses.toTypedArray(),
+            )
+        }
+
+        doLast {
+            copy {
+                from(outputDirectory.resolve("classes.dex"))
+                into(resourceDirectory)
+                rename { "apple_emoji.dex" }
+            }
+        }
+    }
+
     processResources {
-        dependsOn(currentFrameExtensionDex)
+        dependsOn(currentFrameExtensionDex, appleEmojiExtensionDex)
     }
 
     register<JavaExec>("generatePatchesList") {
