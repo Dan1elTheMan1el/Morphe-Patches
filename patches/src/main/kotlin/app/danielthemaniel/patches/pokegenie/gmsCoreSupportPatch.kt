@@ -343,7 +343,7 @@ val gmsCoreSupportPatch = bytecodePatch(
     description = "Routes Google Play Services to MicroG-RE (app.revanced.android.gms) and pins " +
         "Poke Genie's legacy sign-in path so Google sign-in works on the re-signed app. Install " +
         "MicroG-RE, add your account there. Minimal: no push/FCM.",
-    default = false,
+    default = true,
 ) {
     compatibleWith(COMPATIBILITY_POKEGENIE)
     dependsOn(gmsCoreManifestPatch)

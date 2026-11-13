@@ -35,7 +35,15 @@ private const val TRIAL_CLIENT     = "Lcom/pairip/licensecheck/TrialClient;"
 private const val RESTORE =
     "Lapp/danielthemaniel/patches/pokegenie/extension/PairipRestore;"
 
-internal val stripPairipPatch = bytecodePatch {
+@Suppress("unused")
+val stripPairipPatch = bytecodePatch(
+    name = "Strip PairIP",
+    description = "Neutralizes PairIP's startup program (integrity check + Play-Store paywall) " +
+        "and restores its obfuscation tables, while leaving the native VM intact so " +
+        "virtualized methods still run. Also nukes the Java license/signature checks. " +
+        "Required by every other Poke Genie patch -- keep it enabled.",
+    default = true,
+) {
     compatibleWith(COMPATIBILITY_POKEGENIE)
 
     // $c hook classes for the 18 method fields (only in the VM's embedded DEX otherwise),
