@@ -1,3 +1,9 @@
+## [1.7.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0-dev.1...v1.7.0-dev.2) (2026-11-13)
+
+### ✨ New Features
+
+* **Poke Genie:** Remove banner ads patch ([d5ec5e0](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d5ec5e01e4eedf36145053aefa31b129cb36f52c))
+
 ## [1.7.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.1...v1.7.0-dev.1) (2026-11-12)
 
 ### ✨ New Features
