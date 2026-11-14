@@ -57,7 +57,22 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.6.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.6.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
+> **[v1.7.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
+<details>
+<summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 452.1.0.53.64 | 447.0.0.55.81 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Apple emojis everywhere](#apple-emojis-everywhere) | Replaces Instagram's emoji with Apple-style emoji. The emoji font is downloaded once, after asking, the first time the app is opened. |  |
+
+</details>
+
 <details>
 <summary>📦 PokeRaid - for Pokémon GO Raid&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
@@ -128,6 +143,22 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Remove Bottom Banner Ad](#remove-bottom-banner-ad) | Removes DeFit's bottom banner-ad container from the main layout. |  |
 | [Session Distance Notification](#session-distance-notification) | Shows the total distance added during the current sync session in the persistent notification. |  |
 | [Unlimited Time Bypass](#unlimited-time-bypass) | Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed. |  |
+
+</details>
+
+<details>
+<summary>📦 Poke Genie -Remote Raid IV PvP&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.19.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable Ads](#disable-ads) | Removes the in-app and overlay banner ads without unlocking paid features. |  |
+| [microG-RE support (Google sign-in)](#microg-re-support-google-sign-in) | Routes Google Play Services to MicroG-RE (app.revanced.android.gms) and pins Poke Genie's legacy sign-in path so Google sign-in works on the re-signed app. Install MicroG-RE, add your account there. Minimal: no push/FCM. |  |
 
 </details>
 
