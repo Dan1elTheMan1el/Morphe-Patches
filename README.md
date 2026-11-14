@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.7.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
+> **[v1.7.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;22 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -147,7 +147,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 </details>
 
 <details>
-<summary>📦 Poke Genie -Remote Raid IV PvP&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<summary>📦 Poke Genie -Remote Raid IV PvP&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -157,7 +157,8 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Disable Ads](#disable-ads) | Removes the in-app and overlay banner ads without unlocking paid features. |  |
+| [Strip PairIP](#strip-pairip) | Neutralizes PairIP's startup program (integrity check + Play-Store paywall) and restores its obfuscation tables, while leaving the native VM intact so virtualized methods still run. Also nukes the Java license/signature checks. Required by every other Poke Genie patch -- keep it enabled. |  |
+| [Unlock All IAPs](#unlock-all-iaps) | Forces premium flags and server getters to true/max by short-circuiting their methods. |  |
 | [microG-RE support (Google sign-in)](#microg-re-support-google-sign-in) | Routes Google Play Services to MicroG-RE (app.revanced.android.gms) and pins Poke Genie's legacy sign-in path so Google sign-in works on the re-signed app. Install MicroG-RE, add your account there. Minimal: no push/FCM. |  |
 
 </details>

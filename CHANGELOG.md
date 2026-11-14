@@ -1,3 +1,9 @@
+## [1.7.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0-dev.2...v1.7.0-dev.3) (2026-11-14)
+
+### ✨ New Features
+
+* **Poke Genie:** Enable premium flags ([6efc4cd](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/6efc4cdadde010798cd9cd175644a184c0f0c8d6))
+
 ## [1.7.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0-dev.1...v1.7.0-dev.2) (2026-11-13)
 
 ### ✨ New Features
