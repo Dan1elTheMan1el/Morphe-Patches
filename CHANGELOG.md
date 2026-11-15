@@ -1,3 +1,9 @@
+## [1.7.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0-dev.3...v1.7.0-dev.4) (2026-11-15)
+
+### ✨ New Features
+
+* **Campfire:** Initial patch release: theming, post filtering, direct links, live chat updates ([48acbdb](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/48acbdbed0a8972ef92079b415fb16e3f2531aa0))
+
 ## [1.7.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0-dev.2...v1.7.0-dev.3) (2026-11-14)
 
 ### ✨ New Features

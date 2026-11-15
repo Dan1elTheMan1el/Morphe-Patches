@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.7.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;22 patches total
+> **[v1.7.0-dev.4](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0-dev.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;27 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -143,6 +143,25 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Remove Bottom Banner Ad](#remove-bottom-banner-ad) | Removes DeFit's bottom banner-ad container from the main layout. |  |
 | [Session Distance Notification](#session-distance-notification) | Shows the total distance added during the current sync session in the persistent notification. |  |
 | [Unlimited Time Bypass](#unlimited-time-bypass) | Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed. |  |
+
+</details>
+
+<details>
+<summary>📦 Campfire&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2026.42.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Live chat reconnect](#live-chat-reconnect) | Keeps chats updating live: reconnects the real-time message connection when it drops (e.g. after the app was in the background) and restores the chat's subscriptions. |  |
+| [Map post age filter](#map-post-age-filter) | Adds a filter button on the map to only show posts from the past 24 hours, 12 hours, hour or 10 minutes. |  |
+| [Material You Theme](#material-you-theme) | Uses Android 12+ wallpaper-derived Material You colors throughout Campfire, with a dark theme that follows the system. Keeps success/warning/danger and game-brand colors. |  |
+| [Open game links directly](#open-game-links-directly) | Opens Pokémon GO (and other game) links straight in the game instead of going through the AppsFlyer OneLink redirect page. |  |
+| [microG-RE support (Google sign-in)](#microg-re-support-google-sign-in) | Routes Google Play Services to MicroG-RE (app.revanced.android.gms) so Google sign-in and push notifications work on the re-signed app. Install MicroG-RE, add your account there and enable Cloud Messaging. |  |
 
 </details>
 
