@@ -1,3 +1,13 @@
+## [1.8.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0...v1.8.0) (2026-11-19)
+
+### 🐛 Bug Fixes
+
+* **Campfire:** Fixed specific deep link case ([e9ca03b](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/e9ca03be58ca8730d1c360e0753d56776bda19a0))
+
+### ✨ New Features
+
+* **Campfire:** Skip external link dialogue patch ([8a4e881](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/8a4e881f654dc40d769902f3f9e8dd8efe590427))
+
 ## [1.8.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-11-19)
 
 ### 🐛 Bug Fixes
