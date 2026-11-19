@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.7.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.7.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;27 patches total
+> **[v1.8.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.8.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;28 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -147,7 +147,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 </details>
 
 <details>
-<summary>📦 Campfire&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<summary>📦 Campfire&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -161,6 +161,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Map post age filter](#map-post-age-filter) | Adds a filter button on the map to only show posts from the past 24 hours, 12 hours, hour or 10 minutes. |  |
 | [Material You Theme](#material-you-theme) | Uses Android 12+ wallpaper-derived Material You colors throughout Campfire, with a dark theme that follows the system. Keeps success/warning/danger and game-brand colors. |  |
 | [Open game links directly](#open-game-links-directly) | Opens Pokémon GO (and other game) links straight in the game instead of going through the AppsFlyer OneLink redirect page. |  |
+| [Skip external link dialog](#skip-external-link-dialog) | Opens external links right away instead of asking for confirmation first. |  |
 | [microG-RE support (Google sign-in)](#microg-re-support-google-sign-in) | Routes Google Play Services to MicroG-RE (app.revanced.android.gms) so Google sign-in and push notifications work on the re-signed app. Install MicroG-RE, add your account there and enable Cloud Messaging. |  |
 
 </details>

@@ -1,3 +1,9 @@
+## [1.8.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0...v1.8.0-dev.1) (2026-11-19)
+
+### ✨ New Features
+
+* **Campfire:** Skip external link dialogue patch ([8a4e881](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/8a4e881f654dc40d769902f3f9e8dd8efe590427))
+
 ## [1.7.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.6.1...v1.7.0) (2026-11-16)
 
 ### ✨ New Features
