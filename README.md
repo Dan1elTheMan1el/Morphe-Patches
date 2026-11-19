@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.8.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.8.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;28 patches total
+> **[v1.8.1-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.8.1-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;28 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -177,7 +177,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Strip PairIP](#strip-pairip) | Neutralizes PairIP's startup program (integrity check + Play-Store paywall) and restores its obfuscation tables, while leaving the native VM intact so virtualized methods still run. Also nukes the Java license/signature checks. Required by every other Poke Genie patch -- keep it enabled. |  |
+| [PairIP bypass (+ OCR scanning)](#pairip-bypass-ocr-scanning) | Neutralizes PairIP for Poke Genie end to end: skips the startup program (integrity check + Play-Store paywall) and restores its tables, nukes the Java license/signature checks, stops the native VM (so virtualized methods no-op and nothing re-checks the DEX), and swaps in de-PairIP'd OCR libs so iVision scanning works. Requires a universal arm64-v8a APK. Battle simulator is sacrificed. |  |
 | [Unlock All IAPs](#unlock-all-iaps) | Forces premium flags and server getters to true/max by short-circuiting their methods. |  |
 | [microG-RE support (Google sign-in)](#microg-re-support-google-sign-in) | Routes Google Play Services to MicroG-RE (app.revanced.android.gms) and pins Poke Genie's legacy sign-in path so Google sign-in works on the re-signed app. Install MicroG-RE, add your account there. Minimal: no push/FCM. |  |
 

@@ -1,3 +1,9 @@
+## [1.8.1-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.8.0...v1.8.1-dev.1) (2026-11-19)
+
+### 🐛 Bug Fixes
+
+* **Poke Genie:** Fix raid/IV scanning ([dd27be2](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/dd27be2c4b92f2d24455df613832299dcb23c131))
+
 ## [1.8.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.7.0...v1.8.0) (2026-11-19)
 
 ### 🐛 Bug Fixes
