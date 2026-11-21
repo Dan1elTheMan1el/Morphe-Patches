@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.8.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.8.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;28 patches total
+> **[v1.9.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.9.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;29 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -195,6 +195,16 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Full Version](#unlock-full-version) | Unlocks Counter's built-in full-version features, including the Color menu. |  |
+
+</details>
+
+<details>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Memory editor](#memory-editor) | Adds a floating in-app memory editor (like iGameGod / GameGuardian): scan for a value, refine by changed/unchanged/increased/decreased, edit results live, and save or freeze addresses. Works on any app without root. Server-side values can't be changed. |  |
 
 </details>
 
