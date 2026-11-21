@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.9.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.9.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;29 patches total
+> **[v1.9.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.9.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;31 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -108,6 +108,22 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Change keyboard name](#change-keyboard-name) | Changes the name shown for Keyboard Designer in Android's keyboard/input-method switcher. | • Keyboard name |
 | [Start with PokeGenie keyboard](#start-with-pokegenie-keyboard) | Adds my PokeGenie-inspired keyboard design on fresh setup and makes it the portrait text-input default. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features, extended design package, and extended keyboard package. |  |
+
+</details>
+
+<details>
+<summary>📦 Raid Party&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.9.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Client-Side Premium](#client-side-premium) | Removes ads, the join wait, and premium UI locks by forcing the local premium flag. Server features (boss-subscription notifications, premium visible to others) are unaffected. |  |
+| [Google Login Fix (microG-RE)](#google-login-fix-microg-re) | Fixes "Authentication Failed" after re-signing by routing Google Play Services to MicroG-RE (app.revanced.android.gms), which presents Raid Party's original signing certificate so Google issues a valid ID token. Install MicroG-RE and add your Google account there. Login only; no Facebook, no push/FCM. |  |
 
 </details>
 
