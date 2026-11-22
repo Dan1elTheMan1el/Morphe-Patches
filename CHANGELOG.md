@@ -1,3 +1,15 @@
+## [1.9.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-11-21)
+
+### 🐛 Bug Fixes
+
+* **Raid Party:** Raid Party Premium ([c17ee52](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c17ee52bec52e8755f434d82b65fb03c520663ca))
+
+## [1.9.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.8.1...v1.9.0-dev.1) (2026-11-21)
+
+### ✨ New Features
+
+* **memoryeditor:** Universal live memory editor patch ([a363f4c](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/a363f4c1cfff4937b6a395071a6b5f18a2a1ca51))
+
 ## [1.8.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.8.0...v1.8.1) (2026-11-19)
 
 ### 🐛 Bug Fixes
