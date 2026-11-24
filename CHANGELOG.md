@@ -1,3 +1,11 @@
+## [1.10.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.9.0...v1.10.0-dev.1) (2026-11-24)
+
+### ✨ New Features
+
+* **Google Maps:** Add 3D animated Ditto Pokemon navigation avatar, and show Navatar in all transport modes ([c045cb1](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c045cb1ad0354404d3c593e6e7c499d8237bd432))
+* **Google Maps:** Find hub people and other icons in AA display / during drive ([7905e6c](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/7905e6c9586834cdf914157b042b08f3f8832223))
+* **Google Maps:** Initial patch release: fix for nl-morphe-patches on 26.47 ([44258f4](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/44258f468bb5459ecb1f60ac3fdfcdcd5e57d7c0))
+
 ## [1.9.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.8.1...v1.9.0) (2026-11-22)
 
 ### 🐛 Bug Fixes
