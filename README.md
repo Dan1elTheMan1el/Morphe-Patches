@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.9.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.9.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;31 patches total
+> **[v1.10.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.10.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;36 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
@@ -159,6 +159,25 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 | [Remove Bottom Banner Ad](#remove-bottom-banner-ad) | Removes DeFit's bottom banner-ad container from the main layout. |  |
 | [Session Distance Notification](#session-distance-notification) | Shows the total distance added during the current sync session in the persistent notification. |  |
 | [Unlimited Time Bypass](#unlimited-time-bypass) | Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed. |  |
+
+</details>
+
+<details>
+<summary>📦 Google Maps&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.47.00.1022347503 | 26.44.06.1006895251 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Ditto navigation vehicle](#ditto-navigation-vehicle) | Adds an animated Ditto to the 3D vehicles you can pick for navigation. On first launch, Maps opens the Pokémon X/Y Ditto model page (The Models Resource) in an in-app browser; tap download once and Maps builds Ditto from it. Then pick him while navigating (tap the arrow). |  |
+| [Find Hub people on Android Auto](#find-hub-people-on-android-auto) | Shows the people sharing their location with you on the Android Auto map, with their profile photo, like Home and Work. Use with a patch that puts Maps' own map on the car screen. | • Photo pin size |
+| [Hide ads and clutter fixes](#hide-ads-and-clutter-fixes) | Fixes Dutch App Patches' "Hide ads and clutter": the Explore feed ("Local vibe") opening instead of hiding, and Ask Maps staying on. Patch in the same run. |  |
+| [Navigation vehicle in all travel modes](#navigation-vehicle-in-all-travel-modes) | Shows the 3D vehicle you picked for driving (or your custom one) while navigating on foot, by bike, two-wheeler or taxi too, instead of the plain arrow. |  |
+| [Show all map icons while navigating](#show-all-map-icons-while-navigating) | Keeps place icons (restaurants, shops, gas stations) and your pins (Home, Work, saved places, Find Hub people) on the map during navigation, on the phone and in Android Auto. |  |
 
 </details>
 
