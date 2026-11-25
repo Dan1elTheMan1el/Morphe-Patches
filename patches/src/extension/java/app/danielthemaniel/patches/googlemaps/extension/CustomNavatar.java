@@ -174,11 +174,21 @@ public final class CustomNavatar {
      * {@link #icon} answer from filesDir/dtm_navatar.
      */
     public static String manifest(String json) {
-        if (json == null || !ready()) return json;
+        Log.i(TAG, "vehicle list read (" + (json == null ? "null" : json.length() + " chars") + ")");
+        if (json == null) return json;
+        // Unthrottled: Maps reads its vehicle list once, often right after another ready() check.
+        if (dir == null) lastCheck = 0;
+        if (!ready()) {
+            Log.i(TAG, "vehicle list read before Ditto was built");
+            return json;
+        }
         try {
             org.json.JSONObject root = new org.json.JSONObject(json);
             org.json.JSONArray models = root.optJSONArray("models");
-            if (models == null || models.length() == 0) return json;
+            if (models == null || models.length() == 0) {
+                Log.i(TAG, "vehicle list has no models: " + json.substring(0, Math.min(200, json.length())));
+                return json;
+            }
             for (int i = 0; i < models.length(); i++) {
                 if (NAME.equals(models.optJSONObject(i).optString("name"))) return json;
             }
@@ -199,9 +209,9 @@ public final class CustomNavatar {
                     .put("l10nID", 0)
                     .put("light", new org.json.JSONObject().put("color", "#B48CDC").put("texture", "texture.png").put("icon", "icon"))
                     .put("dark", new org.json.JSONObject().put("texture", "texture_dark.png"))));
-            // Copy the travel mode field (if any) from the first entry, so Ditto lands in the same list.
-            org.json.JSONObject first = models.optJSONObject(0);
-            if (first != null && first.has("travel_mode")) ditto.put("travel_mode", first.get("travel_mode"));
+            // The picker only lists vehicles of the route's travel mode. The list mixes modes (DRIVE,
+            // TWO_WHEELER, BICYCLE), so Ditto is always a DRIVE vehicle, like the cars.
+            ditto.put("travel_mode", "DRIVE");
             // First in the list, so the picker shows him right after the default blue arrow.
             org.json.JSONArray reordered = new org.json.JSONArray().put(ditto);
             for (int i = 0; i < models.length(); i++) reordered.put(models.get(i));

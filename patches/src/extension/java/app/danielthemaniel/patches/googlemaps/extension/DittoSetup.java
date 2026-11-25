@@ -42,6 +42,25 @@ import java.net.URL;
 public final class DittoSetup {
     private DittoSetup() {}
 
+    /** Maps reads its vehicle list once per process, so it restarts to pick Ditto up. */
+    private static void restart(android.content.Context c) {
+        try {
+            android.content.Context app = c.getApplicationContext();
+            android.content.Intent launch = app.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
+            if (launch != null) {
+                launch.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                android.app.PendingIntent pending = android.app.PendingIntent.getActivity(app, 0x0d170, launch,
+                    0x04000000 /* FLAG_IMMUTABLE */ | android.app.PendingIntent.FLAG_CANCEL_CURRENT);
+                android.app.AlarmManager alarms = (android.app.AlarmManager) app.getSystemService(android.content.Context.ALARM_SERVICE);
+                alarms.set(android.app.AlarmManager.RTC, System.currentTimeMillis() + 500, pending);
+            }
+        } catch (Throwable t) {
+            Log.w(TAG, "restart", t);
+        }
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+    }
+
     private static final String TAG = CustomNavatar.TAG;
     static final String PAGE = "https://models.spriters-resource.com/3ds/pokemonxy/asset/296368/";
 
@@ -158,9 +177,11 @@ public final class DittoSetup {
                     String summary = CustomNavatar.install(c.getApplicationContext(), zip);
                     main.post(() -> {
                         spinner.setVisibility(View.GONE);
-                        statusText.setText("Ditto is ready!\n\nWhile navigating, tap the arrow and pick Ditto from the vehicles.");
-                        close.setText("Done");
+                        statusText.setText("Ditto is ready!\n\nMaps will restart to add him to the vehicles. "
+                            + "Then, while navigating, tap the arrow and pick Ditto.");
+                        close.setText("Restart Maps");
                         close.setEnabled(true);
+                        close.setOnClickListener(v -> restart(c));
                     });
                 } catch (Throwable t) {
                     Log.w(TAG, "Ditto download/build failed", t);
