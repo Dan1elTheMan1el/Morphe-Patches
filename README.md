@@ -57,7 +57,7 @@ Right now, this repo supports **PokeRaid**, **DeFit**, and **Custom Keyboard Des
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.10.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.10.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;36 patches total
+> **[v1.10.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/releases/tag/v1.10.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;36 patches total
 <details>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>

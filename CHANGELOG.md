@@ -1,3 +1,9 @@
+## [1.10.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-11-25)
+
+### 🐛 Bug Fixes
+
+* **Google Maps:** Fixed Ditto navatar not showing up in vehicles menu ([8917fd5](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/8917fd5ddce4d7442180284ef070e15d418947e3))
+
 ## [1.10.0-dev.1](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.9.0...v1.10.0-dev.1) (2026-11-24)
 
 ### ✨ New Features
