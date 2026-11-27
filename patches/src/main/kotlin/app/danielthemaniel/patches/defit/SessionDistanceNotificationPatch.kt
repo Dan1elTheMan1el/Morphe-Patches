@@ -251,6 +251,68 @@ val sessionDistanceNotificationPatch = bytecodePatch(
 
         notificationService.methods.add(distanceTextMethod)
 
+        /*
+         * public static void patch_resetSessionDistance(Context, boolean checked)
+         *
+         * Zeroes the accumulated session distance when a new sync session
+         * starts (checked == true) so the notification reads "0.00 km" from the
+         * first notification instead of carrying the previous session's total
+         * until the first sync. The "checked" guard lives here, in-method,
+         * rather than as a branch in the injected call site: two separate
+         * index-0 injections into onCheckedChanged that each ended in a label
+         * made dexlib resolve one branch onto itself ("branch offset of zero"),
+         * which failed class verification at startup. The injected call sites
+         * are now branchless.
+         */
+        val resetDistanceMethod = ImmutableMethod(
+            notificationService.type,
+            "patch_resetSessionDistance",
+            listOf(
+                ImmutableMethodParameter(
+                    "Landroid/content/Context;",
+                    null,
+                    null,
+                ),
+                ImmutableMethodParameter(
+                    "Z",
+                    null,
+                    null,
+                ),
+            ),
+            "V",
+            AccessFlags.PUBLIC.value or
+                AccessFlags.STATIC.value,
+            null,
+            null,
+            MutableMethodImplementation(6),
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                if-eqz p1, :patch_ret
+
+                const-string v0, "defit_patch_notification"
+                const/4 v1, 0x0
+                invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+                move-result-object v0
+
+                invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences${'$'}Editor;
+                move-result-object v0
+
+                const-string v1, "session_distance_m"
+                const/4 v2, 0x0
+                invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences${'$'}Editor;->putFloat(Ljava/lang/String;F)Landroid/content/SharedPreferences${'$'}Editor;
+                move-result-object v0
+                invoke-interface {v0}, Landroid/content/SharedPreferences${'$'}Editor;->apply()V
+
+                :patch_ret
+                return-void
+                """.trimIndent()
+            )
+        }
+
+        notificationService.methods.add(resetDistanceMethod)
+
         val addDistanceReference = ImmutableMethodReference(
             notificationService.type,
             "patch_addSessionDistance",
@@ -815,5 +877,65 @@ val sessionDistanceNotificationPatch = bytecodePatch(
                 ),
             )
         }
+
+        /*
+         * Remove the active-time "N minutes remaining" sub-text and reset the
+         * session distance when a new session starts.
+         *
+         * Both versions feed getActiveTime's remaining-minutes value into the
+         * notification builder's sub-text field (0.9.3: Ly/q;->k, 0.8.2a:
+         * Ly/k;->k), which is NotificationCompat's setSubText line. Deleting
+         * that single field write leaves the builder's title/body/distance
+         * untouched; the preceding dead value computation is harmless.
+         */
+        val subTextOwner = if (is093) "Ly/q;" else "Ly/k;"
+
+        val syncSwitchListenerType = if (is093) {
+            "Lcom/googlefit/tester/MainActivity\$12;"
+        } else {
+            "Lcom/googlefit/tester/MainActivity\$l;"
+        }
+
+        val subTextIndex =
+            notificationImplementation.instructions.toList()
+                .withIndex()
+                .firstOrNull { (_, instruction) ->
+                    instruction.opcode == Opcode.IPUT_OBJECT &&
+                        ((instruction as? ReferenceInstruction)
+                            ?.reference as? FieldReference)
+                            ?.let {
+                                it.definingClass == subTextOwner &&
+                                    it.name == "k" &&
+                                    it.type ==
+                                        "Ljava/lang/CharSequence;"
+                            } == true
+                }
+                ?.index
+                ?: error(
+                    "Unable to find DeFit notification sub-text " +
+                        "($subTextOwner->k)"
+                )
+
+        notificationImplementation.removeInstruction(subTextIndex)
+
+        /*
+         * The sync switch's OnCheckedChangeListener is the canonical
+         * session-start signal in both versions (it nulls the last-sync
+         * timestamp and starts the service). onCheckedChanged(CompoundButton,
+         * boolean) has the same shape on both, so reset the distance here when
+         * the switch is turned on. The CompoundButton's context is the hosting
+         * Activity, which is a valid Context for the helper.
+         */
+        mutableClassDefBy(syncSwitchListenerType)
+            .methods
+            .first { it.name == "onCheckedChanged" }
+            .addInstructions(
+                0,
+                """
+                invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+                move-result-object v0
+                invoke-static {v0, p2}, Lcom/googlefit/tester/NotificationService;->patch_resetSessionDistance(Landroid/content/Context;Z)V
+                """.trimIndent()
+            )
     }
 }
