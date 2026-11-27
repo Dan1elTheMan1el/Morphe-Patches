@@ -1,3 +1,13 @@
+## [1.10.0-dev.3](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.10.0-dev.2...v1.10.0-dev.3) (2026-11-27)
+
+### 🐛 Bug Fixes
+
+* **DeFit++:** Remove time remaining counter instead of fighting it ([dd70128](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/dd70128ba6ea2f97b182008836b4ce0990f4ba2d))
+
+### ✨ New Features
+
+* **DeFit++:** Set distance to stop Defit automatically at ([f70662c](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/f70662cdb37681cb4835eaf39c72a18c4f85c84b))
+
 ## [1.10.0-dev.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-11-25)
 
 ### 🐛 Bug Fixes
